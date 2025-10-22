@@ -1,0 +1,46 @@
+YOUTUBE LINK-https://www.youtube.com/watch?v=xz-BCbMWNqg
+
+
+
+--SELECT u.name, m.membership_id, m.current_points FROM User u 
+-- LEFT JOIN Membership m ON u.user_id = m.user_id;
+
+--SELECT u.name, m.membership_id, m.current_points FROM User u 
+ --LEFT JOIN Membership m using (user_id)
+
+--select u.name,m.Membership_id,m.current_points from User u
+--right join Membership m on u.user_id=m.user_id;
+-- SELECT u.user_id, u.name, b.booking_id, b.booking_datetime FROM User u LEFT JOIN Booking b ON u.user_id = b.user_id
+--UNION
+--SELECT u.user_id, u.name, b.booking_id, b.booking_datetime FROM User u RIGHT JOIN Booking b ON u.user_id = b.user_id
+
+
+-- SELECT u.name, m.title,
+--b.booking_datetime,s.show_datetime FROM User u JOIN
+--Booking b ON u.user_id = b.user_id JOIN
+--`Show` s ON b.show_id = s.show_id JOIN
+--Movie m ON s.movie_id = m.movie_id;
+
+
+--SELECT m.title,s.show_datetime,sc.name as Screen_name from Movie m
+--join `show` s on m.movie_id=s.movie_id JOIN
+--Screen sc on s.screen_id=sc.screen_id 
+
+--SELECT m.title,sc.name as screen_name,s.show_id,s.show_datetime from `show` s
+--inner join Movie m on s.movie_id=m.movie_id
+--inner JOIN screen sc on s.screen_id=sc.screen_id
+--join `show` s on sc.screen_id=s.show_id
+
+
+--SELECT m1.title AS movie1, m2.title AS
+--movie2 FROM Movie m1, Movie m2 WHERE
+--m1.genre = m2.genre AND m1.rating >
+--m2.rating;
+
+--SELECT u.name,u.email,b.booking_datetime from User u
+--join Booking b using(user_id)
+
+
+SELECT u.name,u.email,b.booking_datetime from User u
+join Booking b on u.user_id=b.user_id
+
