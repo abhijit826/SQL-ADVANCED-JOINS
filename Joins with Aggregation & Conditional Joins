@@ -1,0 +1,40 @@
+--select u.name,u.email,b.booking_id from user u
+--join booking b using(user_id)
+
+
+--select u.name,u.email,b.booking_id from user u
+--join booking b on u.user_id=b.user_id
+
+
+--SELECT * from Movie NATURAL join Review;
+
+--SELECT m.title,
+--COUNT(b.booking_id) AS
+--total_bookings FROM
+--Movie m JOIN `Show` s 
+--USING (movie_id)
+--JOIN Booking b 
+--USING (show_id)
+--GROUP BY m.title;
+
+
+
+
+--SELECT u.name,
+--SUM(b.total_cost) AS --aggregate function used means group by will come at last
+--total_spent
+--FROM User u
+--JOIN Booking b 
+--using(user_id)
+--GROUP BY u.name;
+
+
+--SELECT m.title,s.show_datetime from Movie m 
+--join `show` s using(movie_id)
+--where m.rating>8.0
+  SELECT u.name,sum(b.total_cost) as total_earning from user u
+  join Booking b using(user_id)
+  --GROUP by b.total_cost
+  GROUP by u.name
+  
+  
