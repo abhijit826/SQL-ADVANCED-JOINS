@@ -1,0 +1,79 @@
+create TABLE icecream (
+  custome_id int PRIMARY key not NULL,
+  Name VARCHAR(100),
+  Email VARCHAR(100) UNIQUE,
+  Phone VARCHAR(15) NOT NULL
+);
+--select * from icecream
+CREATE TABLE products (
+ProductID INT PRIMARY KEY ,
+ProductName VARCHAR(100),
+Price DECIMAL(10,2) CHECK (Price > 0),
+StockQuantity INT
+);
+
+
+CREATE TABLE Customers (
+ CustomerID INT PRIMARY KEY AUTOINCREMENT ,
+ Name VARCHAR(100),
+ Email VARCHAR(100) UNIQUE,
+ Phone VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE OrderDetails (
+OrderDetailID INT PRIMARY KEY,
+OrderID INT,
+ProductID INT,
+Quantity INT CHECK (Quantity > 0)
+);
+
+-- Create Orders table
+CREATE TABLE Orders (
+ OrderID INT PRIMARY KEY,
+ CustomerID INT,
+ OrderDate DATE,
+ TotalAmount DECIMAL(10,2)
+);
+
+select*from Orders
+
+alter table Orders
+add constraint fk_user,
+FOREIGN key( CustomerID) REFERENCES Customers( CustomerID);
+  
+alter table OrderDetails
+add CONSTRAINT fk_users,
+FOREIGN key(OrderID)  REFERENCES Orders(OrderID)
+
+
+OrderDetails.ProductID → Products.ProductID
+
+alter table OrderDetails
+add CONSTRAINT fk_users1
+FOREIGN key(ProductID) REFERENCES products(ProductID)
+--create table
+--AccessoryID (INT, PK), ProductID (INT, FK), 
+--AccessoryName (VARCHAR(100)), Price (DECIMAL, CHECK > 0), StockQuantity (INT)
+
+CREATE table accessories(
+AccessoryID INT PRIMARY KEY ,
+ ProductID INT ,
+  AccessoryName VARCHAR(100),
+ price decimal(10,2) check (price>0),
+  stock_quantity int,
+  CONSTRAINT FK_USER_PRODCUTS FOREIGN key (ProductID) REFERENCES products(ProductID)
+)
+-- Insert Accessories
+INSERT INTO Accessories (AccessoryID,ProductID, AccessoryName, Price, stock_quantity) VALUES
+(1,1, 'Laptop Bag', 50.00, 20),
+(2,2, 'Phone Case', 25.00, 40);
+SELECT * from accessories
+
+--Problem Statement 3:
+--Insert sample data for all tables to test constraints and relations
+insert into Customers(Name,email,phone) VALUES(
+
+'abhijit','ahsis@gmail.com',654654654
+)
+SELECT * from Products
+
