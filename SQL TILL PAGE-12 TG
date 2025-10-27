@@ -1,0 +1,26 @@
+insert INTO movie(title,genre,rating,status,poster_image_url) values(
+'avatar 3','blockbuster','4.5','coming soon','https://dummyimage.com/718x260'
+);
+
+SELECT * from Movie
+SELECT * from Screen
+--A new screen named “IMAX Silver” of type “Premium” is being added with a capacity of 120 seats.
+insert INTO Screen(name,class_type,capacity) values(
+'IMAXSILVER','PREMMIUM','450'
+);
+
+--Problem Statement 3: Insert a user, a booking, and a payment transaction together
+--A new user “Priya Nair” books a ticket for “Avatar 3” and pays using “Bill Desk Gateway.” 
+--Insert all necessary data ensuring referential consistency.
+INSERT into User('name','email','phone') VALUES(
+'priya nair','priya@gmail.com','59+54664465'
+)
+SELECT * from user
+
+INSERT INTO Booking (user_id, show_id, booking_datetime, total_cost) 
+VALUES (LAST_INSERT_ID(), 12, NOW(), 750.00);
+
+INSERT into PaymentGateway(name) VALUES(
+'Bill Desk Gateway'
+);
+SELECT * from PaymentGateway
