@@ -1,0 +1,19 @@
+--SELECT name ,class_type,capacity from screen where capacity >150
+--SELECT name,email from user where phone is not null
+--SELECT title ,genre from movie where title like 'A%'
+SELECT genre from Movie where genre in('Action','Comedy');
+SELECT * from Movie
+SELECT title ,rating from Movie where rating BETWEEN 7.5 and 9.0
+
+SELECT * from show
+SELECT screen_id,movie_id,show_datetime from show where show_datetime>25-01-2025
+ 
+select show_id,screen_id,movie_id FROM show WHERE screen_id not in (1,2)
+
+SELECT show_id,screen_id from show where movie_id is null
+SELECT * from Membership
+SELECT user_id,current_points from Membership where current_points in(170,500)
+SELECT user_id,current_points from Membership where current_points BETWEEN 170 and 500
+
+SELECT m.current_points,u.email from user u join Membership m on u.user_id=m.user_id
+where m.current_points>809 and  u.email is not null
