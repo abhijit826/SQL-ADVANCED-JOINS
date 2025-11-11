@@ -17,3 +17,10 @@ SELECT user_id,current_points from Membership where current_points BETWEEN 170 a
 
 SELECT m.current_points,u.email from user u join Membership m on u.user_id=m.user_id
 where m.current_points>809 and  u.email is not null
+
+SELECT count(*) as total_movie,genre from Movie group by genre
+
+
+SELECT AVG(rating) as avg_rating,genre from Movie group by genre
+SELECT AVG(rating) as avg_rating,genre from Movie group by genre order by avg_rating desc;
+
