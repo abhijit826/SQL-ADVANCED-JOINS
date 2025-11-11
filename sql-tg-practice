@@ -20,7 +20,19 @@ where m.current_points>809 and  u.email is not null
 
 SELECT count(*) as total_movie,genre from Movie group by genre
 
-
 SELECT AVG(rating) as avg_rating,genre from Movie group by genre
 SELECT AVG(rating) as avg_rating,genre from Movie group by genre order by avg_rating desc;
 
+SELECT count(*)as total_boook,user_id from booking group by user_id
+
+SELECT sum(total_cost)as total_boook,user_id from booking group by show_id
+
+SELECT sum(total_cost) as total_boook,show_id from booking group by show_id order by total_boook desc
+
+SELECT order_id,count(*) as total_order from FoodOrderItem GROUP by order_id
+
+SELECT item_id,count(*) as total_order from FoodOrderItem GROUP by item_id
+
+--Calculate the total sales amount for each food item.
+SELECT item_id,SUM(quantity*price_at_time) as total_price from FoodOrderItem GROUP by item_id
+SELECT item_id,SUM(quantity*price_at_time) as total_price from FoodOrderItem GROUP by item_id order by total_price desc
