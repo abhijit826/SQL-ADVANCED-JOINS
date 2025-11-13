@@ -1,0 +1,26 @@
+---13.11.2025  Management wants to know how many bookings each movie has received.
+--shows
+SELECT count(booking_id)as total_booking,b.user_id,b.booking_datetime,m.title,m.genre,s.show_datetime from Show s
+left join Booking b on b.show_id=s.show_id
+left join Movie m on m.movie_id=s.movie_id
+GROUP by m.title
+order by total_booking desc
+
+--Show all users who made a booking in the last 30 days.
+SELECT u.user_id,u.name,b.booking_id,b.booking_datetime from User u
+inner join Booking b on u.user_id=b.user_id
+--filter out thisBooking
+WHERE b.created_at >= now()- interval '30 day'
+
+
+--List all movies along with their average review rating, but replace missing ratings with 0
+
+SELECT m.title,m.rating,r.content,coalesce(AVG(r.rating),0) as avg_rating from Movie m
+left join Review r on m.movie_id=r.movie_id
+GROUP by m.title
+
+--Retrieve user names and their total booking amount using indexed joins (optimized query style)...
+SELECT u.user_id,u.name ,b.booking_id,sum(b.total_cost) as tot_amt from User u
+INNER join Booking b on u.user_id=b.user_id
+GROUP by u.user_id,u.name
+order by tot_amt desc
